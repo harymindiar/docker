@@ -18,10 +18,25 @@ original from https://github.com/kasperisager/php-dockerized
 * [Docker Machine](https://docs.docker.com/machine/) (Mac and Windows only)
 ## Running
 
-Set up a Docker Machine and then run:
+Create docker machine named as `default`
+```sh
+$ docker-machine create -d virtualbox default
+```
+
+you can check list of docker machine by run
+```sh
+$ docker-machine ls
+```
+
+Set env docker machine and use `default` machine. Please note, this env will lost when you close your terminal. :)
+```sh
+$ docker-machine env default
+```
+
+Docker compose up:
 
 ```sh
 $ docker-compose up
 ```
 
-also need NFS for SPEED UP your machine http://www.cameronmaske.com/docker-on-osx/
+also need NFS for SPEED UP your machine http://www.cameronmaske.com/docker-on-osx/.
