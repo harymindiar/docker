@@ -1,38 +1,42 @@
-front:
-  build: .
-  ports:
-    - "80:80"
-    - "443:443"
-    - "9000:9000"
-  links:
-    - mysql:mysql
-    - memcached:memcached
-    - redis:redis
-    - elasticsearch:elasticsearch
-  volumes:
-    - ./www:/html
-    - ./sites:/etc/nginx/conf.d
-    - ./logs:/var/log/supervisor
+version: '2'
+services:
+  front:
+    build: .
+    ports:
+      - "80:80"
+      - "443:443"
+      - "9000:9000"
+    volumes:
+      - ./www:/html
+      - ./sites:/etc/nginx/conf.d
+      - ./logs:/var/log/supervisor
+    links:
+     - mysql:mysql
+     - memcached:memcached
+     - redisserver:redisserver
+     - elasticsearch:elasticsearch
 
-mysql:
-  image: mysql
-  ports:
-    - "3306:3306"
-  environment:
-    MYSQL_ROOT_PASSWORD: password
+  mysql:
+    image: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
 
-memcached:
-  image: memcached
-  ports:
-    - "11211:11211"
+  memcached:
+    image: memcached
+    ports:
+      - "11211:11211"
 
-redis:
-  image: redis
-  ports:
-    - "6379:6379"
+  redisserver:
+    image: redis
+    ports:
+      - "6379:6379"
 
-elasticsearch:
-  image: elasticsearch
-  ports:
-    - "9200:9200"
-    - "9300:9300"
+  elasticsearch:
+    image: elasticsearch
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+        ES_JAVA_OPTS: -Xms1024m -Xmx1024m

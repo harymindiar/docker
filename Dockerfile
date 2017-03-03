@@ -31,6 +31,7 @@ RUN apt-get update && apt-get install -my \
 # Install software
 RUN apt-get install -y git
 RUN apt-get install unzip
+RUN apt-get install vim
 
 # Ensure that PHP5 FPM is run as root.
 RUN sed -i "s/user = www-data/user = root/" /etc/php5/fpm/pool.d/www.conf

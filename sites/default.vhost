@@ -1,6 +1,6 @@
 server {
   server_name default;
-  root        /html/web;
+  root        /html/sc/web;
   index       app_dev.php;
 
   client_max_body_size 100M;
