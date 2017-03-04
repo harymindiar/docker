@@ -18,6 +18,7 @@ original from https://github.com/kasperisager/php-dockerized
 * [Docker Machine](https://docs.docker.com/machine/) (Mac and Windows only)
 ## Running
 
+### Docker machine
 Create docker machine named as `default` by using virtualbox driver
 ```sh
 $ docker-machine create -d virtualbox default
@@ -25,7 +26,7 @@ $ docker-machine create -d virtualbox default
 
 Another driver is xhyve. What you need is install `docker-machine-driver-xhyve` https://github.com/zchee/docker-machine-driver-xhyve.
 ```sh
-$ docker-machine create -d virtualbox xhyve
+$ docker-machine create -d xhyve dev-xhyve
 ```
 
 Set env docker machine and use `default` machine. Please note, this env will lost when you close your terminal. :)
@@ -33,6 +34,13 @@ Set env docker machine and use `default` machine. Please note, this env will los
 $ docker-machine env default
 ```
 
+Or
+
+```sh
+$ docker-machine env dev-xhyve
+```
+
+### Docker-compose up
 Docker compose up:
 
 ```sh
