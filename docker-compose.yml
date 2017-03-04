@@ -6,6 +6,7 @@ services:
       - "80:80"
       - "443:443"
       - "9000:9000"
+      - "3000:3000"
     volumes:
       - ./www:/html
       - ./sites:/etc/nginx/conf.d

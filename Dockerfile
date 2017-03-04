@@ -31,7 +31,7 @@ RUN apt-get update && apt-get install -my \
 # Install software
 RUN apt-get install -y git
 RUN apt-get install unzip
-RUN apt-get install vim
+RUN apt-get install -y vim
 
 # Ensure that PHP5 FPM is run as root.
 RUN sed -i "s/user = www-data/user = root/" /etc/php5/fpm/pool.d/www.conf
@@ -65,6 +65,12 @@ RUN touch /etc/php5/cli/conf.d/redis.ini; echo extension=redis.so > /etc/php5/cl
 COPY conf/nginx.conf /etc/nginx/
 COPY conf/supervisord.conf /etc/supervisor/conf.d/
 COPY conf/php.ini /etc/php5/fpm/conf.d/40-custom.ini
+
+# Install golang
+RUN cd ~; wget https://storage.googleapis.com/golang/go1.8.linux-amd64.tar.gz; tar -xvf go1.8.linux-amd64.tar.gz; mv go /usr/local
+ENV PATH /usr/local/go/bin:$GOPATH/bin:$PATH
+ENV GOPATH /html/go/work
+ENV GOBIN $GOPATH/bin
 
 ################################################################################
 # Volumes
