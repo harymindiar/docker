@@ -1,6 +1,3 @@
-# Docker
-original from https://github.com/kasperisager/php-dockerized
-
 ## What's inside
 
 * [Nginx](http://nginx.org/)
@@ -17,6 +14,8 @@ original from https://github.com/kasperisager/php-dockerized
 * [Docker Engine](https://docs.docker.com/installation/)
 * [Docker Compose](https://docs.docker.com/compose/)
 * [Docker Machine](https://docs.docker.com/machine/) (Mac and Windows only)
+
+## Get started
 
 ### Docker machine
 Create docker machine named as `default` by using virtualbox driver
@@ -40,6 +39,17 @@ Or
 $ docker-machine env dev
 ```
 
+### Docker-machine-nfs
+
+Run NFS for your machine.
+```
+docker-machine-nfs dev \
+    --mount-opts="noacl,async,nolock,vers=3,udp,noatime,actimeo=2" \
+    --shared-folder="/Users/hary/Repo"
+```
+
+`dev` is your docker machine
+
 ### Docker-compose up
 Docker compose up:
 
@@ -47,4 +57,6 @@ Docker compose up:
 $ docker-compose up
 ```
 
-also need NFS for SPEED UP your machine http://www.cameronmaske.com/docker-on-osx/.
+## Thanks to
+http://www.cameronmaske.com/docker-on-osx/
+https://github.com/kasperisager/php-dockerized
