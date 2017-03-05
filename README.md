@@ -48,9 +48,12 @@ $ docker-compose up
 ```
 
 ### Tips
-to SSH your docker machine, you can run `$ docker-machine ssh dev`
+SSH your docker machine `dev`
+```sh
+$ docker-machine ssh dev
+```
 
-for stop your docker-machine, you can run
+stop your docker-machine `dev`
 ```sh
 $ docker-machine stop dev
 ```
