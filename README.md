@@ -49,7 +49,21 @@ $ docker-compose up
 
 ### Tips
 to SSH your docker machine, you can run `$ docker-machine ssh dev`
-for stop your docker-machine, you can run `$ docker-machine stop dev` and to start it again `$ docker-machine stop dev`. and DONT forget to set env docker-machine again by run `$ docker-machine env dev`
+
+for stop your docker-machine, you can run
+```sh
+$ docker-machine stop dev
+```
+
+and to start it again
+```sh
+$ docker-machine stop dev
+```
+
+and DONT forget to set env docker-machine again by run
+```sh
+$ docker-machine env dev
+```
 
 ## Thanks to
 https://github.com/kasperisager/php-dockerized
