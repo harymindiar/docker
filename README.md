@@ -67,4 +67,5 @@ $ docker-machine env dev
 
 ## Thanks to
 https://github.com/kasperisager/php-dockerized
+
 http://www.cameronmaske.com/docker-on-osx/
