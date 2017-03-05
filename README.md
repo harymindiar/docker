@@ -4,12 +4,13 @@ original from https://github.com/kasperisager/php-dockerized
 ## What's inside
 
 * [Nginx](http://nginx.org/)
-* [MySQL](http://www.mysql.com/)
+* [MySQL 5.6](http://www.mysql.com/)
 * [PHP-FPM](http://php-fpm.org/)
 * [phalcon](https://github.com/phalcon/cphalcon)
 * [Memcached](http://memcached.org/)
 * [Redis](http://redis.io/)
-* [Elasticsearch](http://www.elasticsearch.org/)
+* [Elasticsearch 2.4.4](http://www.elasticsearch.org/)
+* [Golang 1.8](https://golang.org/dl/)
 
 ## Requirements
 
