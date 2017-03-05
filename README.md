@@ -18,7 +18,9 @@
 
 ## Get started
 
-### Docker machine
+1.Docker machine
+Create docker machine by using `xhyve`
+
 ```sh
 $ docker-machine create dev -d=xhyve --xhyve-cpu-count=2 --xhyve-memory-size=2048 --xhyve-experimental-nfs-share
 ```
@@ -29,19 +31,20 @@ set your docker machine `env` to use `dev` env
 $ docker-machine env dev
 ```
 
-### Docker-machine-nfs
+2.Docker-machine-nfs
 
-Run NFS for your machine.
+To speedup your shared-folder, we use `docker-machine-nfs`
 ```
-docker-machine-nfs dev \
+$ docker-machine-nfs dev \
     --mount-opts="noacl,async,nolock,vers=3,udp,noatime,actimeo=2" \
     --shared-folder="/Users/hary/Repo"
 ```
 
+Below command will shutdown your docker-machine, so you need to start your docker-machine `$ docker-machine start dev`
+
 `dev` is your docker machine
 
-### Docker-compose up
-Docker compose up:
+3.Docker-compose up
 
 ```sh
 $ docker-compose up
