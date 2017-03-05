@@ -17,7 +17,6 @@ original from https://github.com/kasperisager/php-dockerized
 * [Docker Engine](https://docs.docker.com/installation/)
 * [Docker Compose](https://docs.docker.com/compose/)
 * [Docker Machine](https://docs.docker.com/machine/) (Mac and Windows only)
-## Running
 
 ### Docker machine
 Create docker machine named as `default` by using virtualbox driver
@@ -38,7 +37,7 @@ $ docker-machine env default
 Or
 
 ```sh
-$ docker-machine env dev-xhyve
+$ docker-machine env dev
 ```
 
 ### Docker-compose up
