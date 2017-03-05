@@ -18,7 +18,7 @@
 
 ## Get started
 
-1. Docker machine
+#### 1.Docker machine
 Create docker machine by using `xhyve`
 
 ```sh
@@ -31,7 +31,7 @@ set your docker machine `env` to use `dev` env
 $ docker-machine env dev
 ```
 
-2. Docker-machine-nfs
+#### 2.Docker-machine-nfs
 
 To speedup your shared-folder, we use `docker-machine-nfs`
 ```
@@ -44,7 +44,7 @@ Below command will shutdown your docker-machine, so you need to start your docke
 
 `dev` is your docker machine
 
-3. Docker-compose up
+#### 3.Docker-compose up
 
 ```sh
 $ docker-compose up
