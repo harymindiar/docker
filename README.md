@@ -13,27 +13,17 @@
 
 * [Docker Engine](https://docs.docker.com/installation/)
 * [Docker Compose](https://docs.docker.com/compose/)
-* [Docker Machine](https://docs.docker.com/machine/) (Mac and Windows only)
+* [Docker Machine](https://docs.docker.com/machine/)
+* [Docker Machine Driver XHYVE](https://github.com/zchee/docker-machine-driver-xhyve)
 
 ## Get started
 
 ### Docker machine
-Create docker machine named as `default` by using virtualbox driver
-```sh
-$ docker-machine create -d virtualbox default
-```
-
-Another driver is xhyve. What you need is install `docker-machine-driver-xhyve` https://github.com/zchee/docker-machine-driver-xhyve.
 ```sh
 $ docker-machine create dev -d=xhyve --xhyve-cpu-count=2 --xhyve-memory-size=2048 --xhyve-experimental-nfs-share
 ```
 
-Set env docker machine and use `default` machine. Please note, this env will lost when you close your terminal. :)
-```sh
-$ docker-machine env default
-```
-
-Or
+set your docker machine `env` to use `dev` env
 
 ```sh
 $ docker-machine env dev
@@ -57,6 +47,8 @@ Docker compose up:
 $ docker-compose up
 ```
 
+to SSH your docker machine, you can type `docker-machine ssh dev`
+
 ## Thanks to
-http://www.cameronmaske.com/docker-on-osx/
 https://github.com/kasperisager/php-dockerized
+http://www.cameronmaske.com/docker-on-osx/
