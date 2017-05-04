@@ -52,18 +52,7 @@ RUN apt-get install -y vim
 RUN apt-get -y autoremove && apt-get clean && apt-get autoclean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Ensure that PHP5 FPM is run as root.
 RUN mkdir -p /var/run/php && touch /var/run/php/php5.6-fpm.sock
-RUN sed -i "s/user = www-data/user = root/" /etc/php/5.6/fpm/pool.d/www.conf
-RUN sed -i "s/group = www-data/group = root/" /etc/php/5.6/fpm/pool.d/www.conf
-
-# Pass all docker environment
-RUN sed -i '/^;clear_env = no/s/^;//' /etc/php/5.6/fpm/pool.d/www.conf
-
-# Get access to FPM-ping page /ping
-RUN sed -i '/^;ping\.path/s/^;//' /etc/php/5.6/fpm/pool.d/www.conf
-# Get access to FPM_Status page /status
-RUN sed -i '/^;pm\.status_path/s/^;//' /etc/php/5.6/fpm/pool.d/www.conf
 
 # Install app dependencies
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
