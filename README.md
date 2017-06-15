@@ -15,6 +15,7 @@
 * [Docker Compose](https://docs.docker.com/compose/)
 * [Docker Machine](https://docs.docker.com/machine/)
 * [Docker Machine Driver XHYVE](https://github.com/zchee/docker-machine-driver-xhyve)
+* [Docker Machine NFS](https://github.com/adlogix/docker-machine-nfs)
 
 ## Get started
 
@@ -28,7 +29,7 @@ $ docker-machine create dev -d=xhyve --xhyve-cpu-count=2 --xhyve-memory-size=204
 set your docker machine `env` to use `dev` env
 
 ```sh
-$ docker-machine env dev
+$ eval $(docker-machine env dev)
 ```
 
 #### 2.Docker-machine-nfs
@@ -63,12 +64,12 @@ $ docker-machine stop dev
 
 and to start it again
 ```sh
-$ docker-machine stop dev
+$ docker-machine start dev
 ```
 
 and DONT forget to set env docker-machine again by run
 ```sh
-$ docker-machine env dev
+$ eval $(docker-machine env dev)
 ```
 
 ## Thanks to
