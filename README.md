@@ -22,7 +22,7 @@
 Create docker machine by using `xhyve`
 
 ```sh
-$ docker-machine create dev -d=xhyve --xhyve-cpu-count=2 --xhyve-memory-size=2048 --xhyve-experimental-nfs-share
+$ docker-machine create dev -d=xhyve --xhyve-cpu-count=2 --xhyve-memory-size=2048 --xhyve-experimental-nfs-share --xhyve-disk-size=4096
 ```
 
 set your docker machine `env` to use `dev` env
