@@ -5,17 +5,18 @@ services:
     ports:
       - "80:80"
       - "443:443"
-      - "9000:9000"
       - "3000:3000"
     volumes:
       - ./www:/html
       - ./sites:/etc/nginx/conf.d
       - ./logs:/var/log/supervisor
+      - gluster_data:/data
     links:
      - mysql:mysql
      - memcached:memcached
      - redisserver:redisserver
      - elasticsearch:elasticsearch
+     - solr:solr
 
   mysql:
     image: mysql:5.6
@@ -23,6 +24,10 @@ services:
       - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - ./conf/mysql.cnf:/etc/mysql/conf.d/mycustom.cnf
+      - mysql_data:/var/lib/mysql
+      - mysql_log:/var/log/mysql
 
   memcached:
     image: memcached
@@ -33,6 +38,8 @@ services:
     image: redis
     ports:
       - "6379:6379"
+    volumes:
+      - redisserver_data:/data
 
   elasticsearch:
     image: elasticsearch:2.4.4
@@ -41,3 +48,41 @@ services:
       - "9300:9300"
     environment:
         ES_JAVA_OPTS: -Xms1024m -Xmx1024m
+    volumes:
+      - es_sc_data:/usr/share/elasticsearch/data
+
+  solr:
+    image: solr:5.5-alpine
+    ports:
+      - "8983:8983"
+    volumes:
+      - solr_data:/opt/solr/server/solr/core
+      - gluster_data:/data
+
+  nsqlookupd:
+    image: nsqio/nsq
+    command: /nsqlookupd
+    ports:
+      - "4160:4160"
+      - "4161:4161"
+
+  nsqd:
+    image: nsqio/nsq
+    command: /nsqd --lookupd-tcp-address=nsqlookupd:4160
+    ports:
+      - "4150:4150"
+      - "4151:4151"
+
+  nsqadmin:
+    image: nsqio/nsq
+    command: /nsqadmin --lookupd-http-address=nsqlookupd:4161
+    ports:
+      - "4171:4171"
+
+volumes:
+    mysql_data:
+    mysql_log:
+    es_sc_data:
+    redisserver_data:
+    solr_data:
+    gluster_data:
